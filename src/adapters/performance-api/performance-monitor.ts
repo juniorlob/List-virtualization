@@ -163,6 +163,7 @@ export class PerformanceMonitor implements IPerformanceMonitor {
   /**
    * Get current memory usage in megabytes
    * Falls back to 0 if performance.memory is not available
+   * Requirement 10.3: Graceful degradation for unavailable APIs
    */
   private getMemoryUsage(): number {
     try {
@@ -177,8 +178,10 @@ export class PerformanceMonitor implements IPerformanceMonitor {
       }
     } catch (error) {
       // Silently fail if memory API is not available
+      console.warn('Memory API not available:', error);
     }
 
+    // Return 0 to indicate unavailable (will be displayed as "N/A" in UI)
     return 0;
   }
 

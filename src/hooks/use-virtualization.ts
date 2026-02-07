@@ -153,6 +153,9 @@ export function useVirtualization(
    *
    * Initializes PerformanceMonitor when enabled and cleans up on unmount.
    * Updates metrics state periodically with collected performance data.
+   *
+   * Requirement 7.1: Metrics update at least once per second
+   * Requirement 7.4: Batch metric updates to avoid excessive re-renders
    */
   useEffect(() => {
     if (!enablePerformanceMonitoring) {
@@ -163,16 +166,25 @@ export function useVirtualization(
     const monitor = new PerformanceMonitor();
     performanceMonitorRef.current = monitor;
 
-    // Start monitoring with callback to update metrics state
+    // Start monitoring - PerformanceMonitor collects metrics continuously via RAF
     monitor.startMonitoring(
-      (newMetrics) => {
-        setMetrics(newMetrics);
+      () => {
+        // Metrics are collected internally, we'll read them on an interval
       },
       containerRef.current || undefined
     );
 
+    // Set up interval to update metrics state once per second
+    // This ensures metrics update at least once per second (Requirement 7.1)
+    // while avoiding excessive re-renders (Requirement 7.4)
+    const metricsIntervalId = setInterval(() => {
+      const currentMetrics = monitor.getMetrics();
+      setMetrics(currentMetrics);
+    }, 1000);
+
     // Cleanup on unmount
     return () => {
+      clearInterval(metricsIntervalId);
       monitor.stopMonitoring();
       performanceMonitorRef.current = null;
     };
@@ -182,6 +194,7 @@ export function useVirtualization(
    * Update container reference for DOM node counting
    *
    * When container ref changes, update the performance monitor's container reference.
+   * Note: The interval-based metrics update is handled in the main monitoring effect above.
    */
   useEffect(() => {
     if (enablePerformanceMonitoring && performanceMonitorRef.current && containerRef.current) {
@@ -189,11 +202,21 @@ export function useVirtualization(
       const monitor = performanceMonitorRef.current;
       monitor.stopMonitoring();
       monitor.startMonitoring(
-        (newMetrics) => {
-          setMetrics(newMetrics);
+        () => {
+          // Metrics are collected internally, read on interval in main effect
         },
         containerRef.current
       );
+
+      // Set up interval to update metrics state once per second
+      const metricsIntervalId = setInterval(() => {
+        const currentMetrics = monitor.getMetrics();
+        setMetrics(currentMetrics);
+      }, 1000);
+
+      return () => {
+        clearInterval(metricsIntervalId);
+      };
     }
   }, [enablePerformanceMonitoring, containerRef.current]);
 

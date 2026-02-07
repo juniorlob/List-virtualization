@@ -1,15 +1,15 @@
 import { useState } from 'react'
-import { ComparisonDemo, InteractiveDemo } from './demo/pages'
+import { ComparisonDemo, InteractiveDemo, UnifiedDemoPage } from './demo/pages'
 import './app.css'
 
-type DemoPage = 'comparison' | 'interactive' | 'home'
+type DemoPage = 'comparison' | 'interactive' | 'unified' | 'home'
 
 function App() {
   const [currentPage, setCurrentPage] = useState<DemoPage>('home')
 
   return (
     <div className="app">
-      <nav className="app-nav">
+      <nav className="app-nav" role="navigation">
         <div className="app-nav-container">
           <h1 className="app-title">List Virtualization Demo</h1>
           <div className="app-nav-links">
@@ -18,6 +18,12 @@ function App() {
               onClick={() => setCurrentPage('home')}
             >
               Home
+            </button>
+            <button
+              className={`nav-link ${currentPage === 'unified' ? 'active' : ''}`}
+              onClick={() => setCurrentPage('unified')}
+            >
+              Unified Demo
             </button>
             <button
               className={`nav-link ${currentPage === 'comparison' ? 'active' : ''}`}
@@ -37,6 +43,7 @@ function App() {
 
       <main className="app-main">
         {currentPage === 'home' && <HomePage onNavigate={setCurrentPage} />}
+        {currentPage === 'unified' && <UnifiedDemoPage />}
         {currentPage === 'comparison' && <ComparisonDemo />}
         {currentPage === 'interactive' && <InteractiveDemo />}
       </main>
@@ -66,6 +73,20 @@ function HomePage({ onNavigate }: { onNavigate: (page: DemoPage) => void }) {
         </section>
 
         <div className="demo-cards">
+          <div className="demo-card">
+            <h3>Unified Demo</h3>
+            <p>
+              Switch between virtualized and non-virtualized modes to see resource savings
+              in real-time with side-by-side metrics comparison.
+            </p>
+            <button
+              className="demo-card-button"
+              onClick={() => onNavigate('unified')}
+            >
+              Try Unified Demo
+            </button>
+          </div>
+
           <div className="demo-card">
             <h3>Comparison Demo</h3>
             <p>

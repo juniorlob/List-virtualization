@@ -27,7 +27,7 @@ describe('useVirtualization', () => {
         useVirtualization(1000, 50, options)
       );
 
-      expect(result.current.visibleRange).toEqual({ start: 0, end: 15 });
+      expect(result.current.visibleRange).toEqual({ start: 0, end: 14 });
       expect(result.current.totalHeight).toBe(50000);
       expect(result.current.metrics).toEqual({
         fps: 0,
@@ -49,9 +49,9 @@ describe('useVirtualization', () => {
         useVirtualization(1000, 50, options)
       );
 
-      // With overscan 5: visible items 0-11 (12 items) + 5 above + 5 below = 0-17
+      // With overscan 5: visible items 0-11 (12 items) + 5 above + 5 below = 0-16
       expect(result.current.visibleRange.start).toBe(0);
-      expect(result.current.visibleRange.end).toBe(17);
+      expect(result.current.visibleRange.end).toBe(16);
     });
 
     it('should accept custom calculator via dependency injection', () => {

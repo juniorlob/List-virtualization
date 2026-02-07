@@ -23,12 +23,12 @@ describe('VirtualizationCalculator', () => {
       // Overscan: 3
       //
       // First visible item: floor(500 / 50) = 10
-      // Last visible item: floor((500 + 600) / 50) = 22
-      // With overscan: start = 10 - 3 = 7, end = 22 + 3 = 25
+      // Last visible item: floor((500 + 600 - 1) / 50) = floor(1099 / 50) = 21
+      // With overscan: start = 10 - 3 = 7, end = 21 + 3 = 24
       const range = calculator.calculateVisibleRange(500, 600, 1000, 50, 3);
 
       expect(range.start).toBe(7);
-      expect(range.end).toBe(25);
+      expect(range.end).toBe(24);
     });
 
     it('clamps start to 0 when overscan would go negative', () => {
