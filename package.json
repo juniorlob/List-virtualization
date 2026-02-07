@@ -1,11 +1,35 @@
 {
   "name": "virtualization-demo",
-  "private": true,
   "version": "0.1.0",
   "type": "module",
+  "description": "A React list virtualization component for efficient rendering of large datasets",
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "virtualization",
+    "virtual-list",
+    "performance",
+    "large-lists"
+  ],
+  "main": "./dist/virtualized-list.cjs",
+  "module": "./dist/virtualized-list.js",
+  "types": "./dist/components/virtualized-list/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/components/virtualized-list/index.d.ts",
+      "import": "./dist/virtualized-list.js",
+      "require": "./dist/virtualized-list.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "npm run build:types && vite build",
+    "build:types": "tsc -p tsconfig.lib.json",
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "vitest",
@@ -14,9 +38,9 @@
     "test:coverage": "vitest run --coverage",
     "type-check": "tsc --noEmit"
   },
-  "dependencies": {
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -34,6 +58,8 @@
     "fast-check": "^4.5.3",
     "globals": "^16.5.0",
     "jsdom": "^28.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
     "vite": "^7.2.4",

@@ -6,7 +6,7 @@
  * and render time to help evaluate virtualization performance.
  */
 
-import { IPerformanceMonitor, PerformanceMetrics } from '../../core/virtualization/types';
+import type { IPerformanceMonitor, PerformanceMetrics } from '../../core/virtualization/types';
 
 /**
  * Default initial metrics with safe values
@@ -27,7 +27,6 @@ export class PerformanceMonitor implements IPerformanceMonitor {
   private rafId: number | null = null;
   private observer: PerformanceObserver | null = null;
   private frameTimestamps: number[] = [];
-  private lastFrameTime: number = 0;
   private containerElement: HTMLElement | null = null;
   private isMonitoring: boolean = false;
 
@@ -49,7 +48,6 @@ export class PerformanceMonitor implements IPerformanceMonitor {
     this.containerElement = containerElement || null;
     this.isMonitoring = true;
     this.frameTimestamps = [];
-    this.lastFrameTime = performance.now();
 
     // Initialize PerformanceObserver for render time measurements
     this.initializePerformanceObserver();

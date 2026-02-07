@@ -1,0 +1,33 @@
+# Source files
+src/
+tests/
+
+# Configuration files
+.kiro/
+.vscode/
+*.config.ts
+*.config.js
+tsconfig*.json
+.eslintrc*
+.prettierrc*
+
+# Documentation (keep README.md)
+*.md
+!README.md
+
+# Development files
+.git/
+.gitignore
+node_modules/
+
+# Test and coverage
+coverage/
+.nyc_output/
+
+# Build artifacts (keep dist/)
+*.log
+*.tsbuildinfo
+
+# Demo-specific files
+public/
+index.html

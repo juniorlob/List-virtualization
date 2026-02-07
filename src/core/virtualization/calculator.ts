@@ -103,8 +103,12 @@ export class VirtualizationCalculator implements IVirtualizationCalculator {
     const firstVisibleIndex = Math.floor(safeScrollTop / effectiveItemHeight);
 
     // Calculate the last visible item index (without overscan)
+    // We subtract 1 from the sum to exclude items that start exactly at the bottom edge
+    // For example, with containerHeight=200 and itemHeight=50:
+    // - Items 0-3 are visible (pixels 0-199)
+    // - Item 4 starts at pixel 200, which is outside the visible area
     const lastVisibleIndex = Math.floor(
-      (safeScrollTop + safeContainerHeight) / effectiveItemHeight
+      (safeScrollTop + safeContainerHeight - 1) / effectiveItemHeight
     );
 
     // Apply overscan buffer above and below

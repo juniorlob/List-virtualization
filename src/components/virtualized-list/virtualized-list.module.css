@@ -1,0 +1,254 @@
+/**
+ * VirtualizedList component styles
+ *
+ * Component-scoped styles using CSS Modules.
+ * These provide default styles that can be overridden via className prop.
+ *
+ * Requirements:
+ * - 8.1: Use CSS Modules for component-scoped styling
+ * - 8.2: Provide default styles that can be overridden
+ */
+
+/**
+ * Scroll container - the outer viewport element
+ *
+ * This container handles scrolling and defines the visible viewport.
+ * The overflow-auto property enables scrolling when content exceeds container height.
+ */
+.scrollContainer {
+  /* Enable vertical scrolling (Requirement 8.1) */
+  overflow: auto;
+
+  /* Smooth scrolling for better UX (Requirement 8.4) */
+  scroll-behavior: smooth;
+
+  /* Prevent horizontal overflow */
+  overflow-x: hidden;
+
+  /* Ensure container takes full width */
+  width: 100%;
+
+  /* Use GPU acceleration for smoother scrolling */
+  will-change: scroll-position;
+
+  /* Improve scrolling performance on touch devices */
+  -webkit-overflow-scrolling: touch;
+
+  /* Default background - can be overridden */
+  background-color: transparent;
+
+  /* Box sizing for predictable dimensions */
+  box-sizing: border-box;
+}
+
+/**
+ * Content spacer - the inner container that creates total height
+ *
+ * This element has a height equal to (itemCount × itemHeight) to create
+ * the proper scrollbar size. It uses relative positioning so that absolutely
+ * positioned children are positioned relative to it.
+ */
+.contentSpacer {
+  /* Relative positioning for absolute children (Requirement 8.1) */
+  position: relative;
+
+  /* Full width to contain items */
+  width: 100%;
+
+  /* Height is set inline via style prop: itemCount × itemHeight */
+  /* This creates the proper scrollbar size */
+
+  /* Prevent margin collapse */
+  overflow: hidden;
+
+  /* Box sizing for predictable dimensions */
+  box-sizing: border-box;
+}
+
+/**
+ * List item - individual item wrapper with absolute positioning
+ *
+ * Each item is absolutely positioned at its calculated offset (index × itemHeight).
+ * This allows us to render only visible items while maintaining correct visual positions.
+ */
+.listItem {
+  /* Absolute positioning for virtualization (Requirement 8.1) */
+  position: absolute;
+
+  /* Full width - set inline via style prop */
+  /* Top position - set inline via style prop: index × itemHeight */
+  /* Height - set inline via style prop: itemHeight */
+
+  /* Prevent content from overflowing item bounds */
+  overflow: hidden;
+
+  /* Box sizing for predictable dimensions */
+  box-sizing: border-box;
+
+  /* Default padding - can be overridden (Requirement 8.2) */
+  padding: 0;
+
+  /* Default margin - can be overridden (Requirement 8.2) */
+  margin: 0;
+
+  /* Ensure items don't interfere with each other */
+  pointer-events: auto;
+
+  /* Default background - can be overridden (Requirement 8.2) */
+  background-color: transparent;
+
+  /* Improve rendering performance */
+  contain: layout style paint;
+}
+
+/**
+ * Responsive Styles (Requirement 8.6)
+ *
+ * Media queries to adapt the virtualized list for different screen sizes.
+ * These ensure optimal display and performance across devices.
+ */
+
+/* Mobile devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .scrollContainer {
+    /* Optimize touch scrolling on mobile */
+    -webkit-overflow-scrolling: touch;
+
+    /* Reduce scroll snap for smoother mobile experience */
+    scroll-behavior: smooth;
+
+    /* Ensure full width on mobile */
+    width: 100%;
+
+    /* Add slight padding for better touch targets */
+    padding: 0 4px;
+  }
+
+  .listItem {
+    /* Slightly reduce padding on mobile for more content */
+    padding: 0 8px;
+
+    /* Ensure touch-friendly minimum height */
+    min-height: 44px;
+  }
+}
+
+/* Tablets (landscape phones and portrait tablets, 576px to 767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .scrollContainer {
+    /* Maintain smooth scrolling */
+    scroll-behavior: smooth;
+
+    /* Optimize for tablet viewport */
+    width: 100%;
+    padding: 0 8px;
+  }
+
+  .listItem {
+    /* Comfortable padding for tablet */
+    padding: 0 12px;
+  }
+}
+
+/* Small desktops and landscape tablets (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+  .scrollContainer {
+    /* Smooth scrolling for desktop */
+    scroll-behavior: smooth;
+
+    /* Standard width */
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .listItem {
+    /* Standard desktop padding */
+    padding: 0 16px;
+  }
+}
+
+/* Medium desktops (992px to 1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+  .scrollContainer {
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+
+    /* Full width with comfortable padding */
+    width: 100%;
+    padding: 0 16px;
+  }
+
+  .listItem {
+    /* Comfortable padding for medium screens */
+    padding: 0 20px;
+  }
+}
+
+/* Large desktops (1200px and up) */
+@media (min-width: 1200px) {
+  .scrollContainer {
+    /* Smooth scrolling for large screens */
+    scroll-behavior: smooth;
+
+    /* Full width with generous padding */
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .listItem {
+    /* Generous padding for large screens */
+    padding: 0 24px;
+  }
+}
+
+/* High DPI displays (Retina, 4K, etc.) */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  .scrollContainer {
+    /* Enhance rendering on high DPI displays */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .listItem {
+    /* Improve text rendering on retina displays */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Reduced motion preference (accessibility) */
+@media (prefers-reduced-motion: reduce) {
+  .scrollContainer {
+    /* Disable smooth scrolling for users who prefer reduced motion */
+    scroll-behavior: auto;
+
+    /* Disable GPU acceleration animations */
+    will-change: auto;
+  }
+
+  .listItem {
+    /* Disable transitions for reduced motion */
+    transition: none;
+  }
+}
+
+/* Print styles */
+@media print {
+  .scrollContainer {
+    /* Remove scrolling for print */
+    overflow: visible;
+    height: auto !important;
+  }
+
+  .contentSpacer {
+    /* Expand to show all content when printing */
+    height: auto !important;
+  }
+
+  .listItem {
+    /* Use static positioning for print */
+    position: static !important;
+    page-break-inside: avoid;
+  }
+}

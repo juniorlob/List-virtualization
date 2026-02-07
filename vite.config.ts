@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -8,5 +9,36 @@ export default defineConfig({
     modules: {
       localsConvention: 'camelCase',
     },
+  },
+  build: {
+    lib: {
+      // Entry point for the library
+      entry: resolve(__dirname, 'src/components/virtualized-list/index.tsx'),
+      name: 'VirtualizedList',
+      // Generate multiple formats
+      formats: ['es', 'cjs', 'umd'],
+      fileName: (format) => {
+        if (format === 'es') return 'virtualized-list.js'
+        if (format === 'cjs') return 'virtualized-list.cjs'
+        if (format === 'umd') return 'virtualized-list.umd.js'
+        return `virtualized-list.${format}.js`
+      },
+    },
+    rollupOptions: {
+      // Externalize dependencies that shouldn't be bundled
+      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      output: {
+        // Provide global variables for UMD build
+        globals: {
+          react: 'React',
+          'react-dom': 'ReactDOM',
+          'react/jsx-runtime': 'jsxRuntime',
+        },
+      },
+    },
+    // Generate source maps for debugging
+    sourcemap: true,
+    // Ensure CSS is extracted
+    cssCodeSplit: false,
   },
 })
