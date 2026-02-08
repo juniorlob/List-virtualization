@@ -14,7 +14,6 @@ export default defineConfig({
       '@/adapters': resolve(__dirname, './src/adapters'),
       '@/demo': resolve(__dirname, './src/demo'),
       '@/utils': resolve(__dirname, './src/utils'),
-      '@/scripts': resolve(__dirname, './src/scripts'),
     },
   },
   css: {

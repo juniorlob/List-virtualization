@@ -36,10 +36,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "type-check": "tsc --noEmit",
-    "migrate-imports": "tsx src/scripts/migrate-imports.ts",
-    "migrate-imports:dry-run": "tsx src/scripts/migrate-imports.ts --dry-run",
-    "migrate-imports:verbose": "tsx src/scripts/migrate-imports.ts --verbose"
+    "type-check": "tsc --noEmit"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

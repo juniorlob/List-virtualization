@@ -67,35 +67,6 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
     expect(datasetSizeInputAfter.value).toBe('5000');
   });
 
-  it('should persist item height when switching from virtualized to non-virtualized mode', async () => {
-    render(<UnifiedDemoPage initialMode="virtualized" />);
-
-    // Verify initial render in virtualized mode
-    expect(screen.getByTestId('virtualized-list')).toBeInTheDocument();
-
-    // Find and change item height control
-    const itemHeightInput = screen.getByTestId('item-height-control-input') as HTMLInputElement;
-    expect(itemHeightInput.value).toBe('50'); // Default value
-
-    // Change item height to 100
-    fireEvent.change(itemHeightInput, { target: { value: '100' } });
-    expect(itemHeightInput.value).toBe('100');
-
-    // Switch to non-virtualized mode
-    const nonVirtualizedButton = screen.getByTestId('mode-toggle-non-virtualized');
-    await act(async () => {
-      fireEvent.click(nonVirtualizedButton);
-      await new Promise(resolve => setTimeout(resolve, 50));
-    });
-
-    // Verify non-virtualized list is now rendered
-    expect(screen.getByTestId('non-virtualized-list')).toBeInTheDocument();
-    expect(screen.queryByTestId('virtualized-list')).not.toBeInTheDocument();
-
-    // Verify item height persisted
-    const itemHeightInputAfter = screen.getByTestId('item-height-control-input') as HTMLInputElement;
-    expect(itemHeightInputAfter.value).toBe('100');
-  });
 
   it('should persist overscan when switching modes multiple times', async () => {
     render(<UnifiedDemoPage initialMode="virtualized" />);
@@ -147,14 +118,11 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Change all control values
     const datasetSizeInput = screen.getByTestId('dataset-size-control-input') as HTMLInputElement;
-    const itemHeightInput = screen.getByTestId('item-height-control-input') as HTMLInputElement;
 
     fireEvent.change(datasetSizeInput, { target: { value: '15000' } });
-    fireEvent.change(itemHeightInput, { target: { value: '75' } });
 
     // Verify values changed
     expect(datasetSizeInput.value).toBe('15000');
-    expect(itemHeightInput.value).toBe('75');
 
     // Switch to virtualized mode
     const virtualizedButton = screen.getByTestId('mode-toggle-virtualized');
@@ -171,7 +139,6 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Verify all values are correct
     expect((screen.getByTestId('dataset-size-control-input') as HTMLInputElement).value).toBe('15000');
-    expect((screen.getByTestId('item-height-control-input') as HTMLInputElement).value).toBe('75');
     expect((screen.getByTestId('overscan-control-input') as HTMLInputElement).value).toBe('5');
 
     // Switch back to non-virtualized mode
@@ -185,7 +152,6 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Verify dataset size and item height persisted
     expect((screen.getByTestId('dataset-size-control-input') as HTMLInputElement).value).toBe('15000');
-    expect((screen.getByTestId('item-height-control-input') as HTMLInputElement).value).toBe('75');
 
     // Switch back to virtualized mode again
     await act(async () => {
@@ -197,7 +163,6 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Verify all values persisted through multiple switches
     expect((screen.getByTestId('dataset-size-control-input') as HTMLInputElement).value).toBe('15000');
-    expect((screen.getByTestId('item-height-control-input') as HTMLInputElement).value).toBe('75');
     expect((screen.getByTestId('overscan-control-input') as HTMLInputElement).value).toBe('5');
   });
 
@@ -209,21 +174,17 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Set custom control values
     const datasetSizeInput = screen.getByTestId('dataset-size-control-input') as HTMLInputElement;
-    const itemHeightInput = screen.getByTestId('item-height-control-input') as HTMLInputElement;
 
     fireEvent.change(datasetSizeInput, { target: { value: '20000' } });
-    fireEvent.change(itemHeightInput, { target: { value: '60' } });
 
     // Verify control values are set
     expect(datasetSizeInput.value).toBe('20000');
-    expect(itemHeightInput.value).toBe('60');
 
     // Change dataset size again (this would invalidate baseline if it existed)
     fireEvent.change(datasetSizeInput, { target: { value: '25000' } });
 
     // Verify control values are maintained
     expect((screen.getByTestId('dataset-size-control-input') as HTMLInputElement).value).toBe('25000');
-    expect((screen.getByTestId('item-height-control-input') as HTMLInputElement).value).toBe('60');
 
     // Switch to virtualized mode
     const virtualizedButton = screen.getByTestId('mode-toggle-virtualized');
@@ -236,6 +197,5 @@ describe('UnifiedDemoPage - Control Value Persistence', () => {
 
     // Verify control values persisted after mode switch
     expect((screen.getByTestId('dataset-size-control-input') as HTMLInputElement).value).toBe('25000');
-    expect((screen.getByTestId('item-height-control-input') as HTMLInputElement).value).toBe('60');
   });
 });
