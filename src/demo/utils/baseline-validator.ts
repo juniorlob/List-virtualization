@@ -8,7 +8,7 @@
  * Requirements: 8.3
  */
 
-import type { PerformanceMetrics, DemoConfig } from '../pages/unified-demo-types';
+import type { PerformanceMetrics, DemoConfig } from '@/demo/pages/unified-demo-types';
 
 /**
  * Determines whether the baseline metrics should be invalidated based on

@@ -8,7 +8,7 @@
 
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent, act } from '@testing-library/react';
-import { UnifiedDemoPage } from '../../../src/demo/pages/unified-demo-page';
+import { UnifiedDemoPage } from '@/demo/pages/unified-demo-page';
 
 // Mock the VirtualizedList component
 vi.mock('../../../src/components/virtualized-list/virtualized-list', () => ({

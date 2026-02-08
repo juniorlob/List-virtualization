@@ -8,7 +8,8 @@
  * Requirements: 3.6, 8.4, 8.5
  */
 
-import type { PerformanceMetrics } from '../../demo/pages/unified-demo-types';
+import type { PerformanceMetrics } from '@/demo/pages/unified-demo-types';
+
 import styles from './baseline-info-display.module.css';
 
 interface BaselineInfoDisplayProps {

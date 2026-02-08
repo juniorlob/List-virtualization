@@ -8,13 +8,16 @@
  */
 
 import { useState, useRef, useCallback, useMemo, useEffect } from 'react';
-import { VirtualizationCalculator } from '../core/virtualization/calculator';
-import { PerformanceMonitor } from '../adapters/performance-api/performance-monitor';
+
+import { VirtualizationCalculator } from '@/core/virtualization/calculator';
+
+import { PerformanceMonitor } from '@/adapters/performance-api/performance-monitor';
+
 import type {
   VirtualizationOptions,
   VirtualizationResult,
   PerformanceMetrics,
-} from '../core/virtualization/types';
+} from '@/core/virtualization/types';
 
 /**
  * Default values for virtualization options

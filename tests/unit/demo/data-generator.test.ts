@@ -3,7 +3,7 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { generateData, type DemoItem } from '../../../src/demo/utils/data-generator';
+import { generateData, type DemoItem } from '@/demo/utils/data-generator';
 
 describe('generateData', () => {
   describe('basic functionality', () => {

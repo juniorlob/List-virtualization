@@ -14,8 +14,9 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import { UnifiedDemoPage } from '../../src/demo/pages/unified-demo-page';
-import type { PerformanceMetrics as CorePerformanceMetrics } from '../../src/core/virtualization/types';
+import { UnifiedDemoPage } from '@/demo/pages/unified-demo-page';
+
+import type { PerformanceMetrics as CorePerformanceMetrics } from '@/core/virtualization/types';
 
 // Mock the VirtualizedList component
 vi.mock('../../src/components/virtualized-list/virtualized-list', () => ({

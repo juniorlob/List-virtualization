@@ -5,7 +5,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
-import { InteractiveDemo } from '../../src/demo/pages/interactive-demo';
+import { InteractiveDemo } from '@/demo/pages/interactive-demo';
 
 describe('InteractiveDemo Integration Tests', () => {
   describe('Component Rendering', () => {

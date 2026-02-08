@@ -8,12 +8,16 @@
  */
 
 import React from 'react';
-import { useVirtualization } from '../../hooks/use-virtualization';
-import { VirtualizationCalculator } from '../../core/virtualization/calculator';
+
+import { VirtualizationCalculator } from '@/core/virtualization/calculator';
+
+import { useVirtualization } from '@/hooks/use-virtualization';
+
 import type {
   IVirtualizationCalculator,
   PerformanceMetrics,
-} from '../../core/virtualization/types';
+} from '@/core/virtualization/types';
+
 import styles from './virtualized-list.module.css';
 
 /**

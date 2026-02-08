@@ -4,8 +4,10 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useVirtualization } from '../../../src/hooks/use-virtualization';
-import type { VirtualizationOptions } from '../../../src/core/virtualization/types';
+
+import { useVirtualization } from '@/hooks/use-virtualization';
+
+import type { VirtualizationOptions } from '@/core/virtualization/types';
 
 describe('useVirtualization', () => {
   beforeEach(() => {

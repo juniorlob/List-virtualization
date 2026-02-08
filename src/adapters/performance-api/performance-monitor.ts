@@ -6,7 +6,7 @@
  * and render time to help evaluate virtualization performance.
  */
 
-import type { IPerformanceMonitor, PerformanceMetrics } from '../../core/virtualization/types';
+import type { IPerformanceMonitor, PerformanceMetrics } from '@/core/virtualization/types';
 
 /**
  * Default initial metrics with safe values

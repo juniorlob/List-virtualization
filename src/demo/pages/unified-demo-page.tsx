@@ -9,22 +9,27 @@
  */
 
 import { useState, useCallback, useEffect, useMemo, useRef } from 'react';
-import { VirtualizedList } from '../../components/virtualized-list/virtualized-list';
-import { NonVirtualizedList } from '../../components/non-virtualized-list/non-virtualized-list';
-import { ModeToggle, type ListMode } from '../../components/ui/mode-toggle';
-import { ControlPanel } from '../../components/ui/control-panel';
-import { ResourceSavingsDisplay } from '../../components/ui/resource-savings-display';
-import { BaselineInfoDisplay } from '../../components/ui/baseline-info-display';
-import { ErrorBoundary } from '../../components/ui/error-boundary';
-import { useBaselineAutoCapture } from '../hooks/use-baseline-auto-capture';
-import { shouldInvalidateBaseline } from '../utils/baseline-validator';
-import { generateData, type DemoItem } from '../../demo/utils/data-generator';
+
+import { useBaselineAutoCapture } from '@/demo/hooks/use-baseline-auto-capture';
+import { shouldInvalidateBaseline } from '@/demo/utils/baseline-validator';
+import { generateData, type DemoItem } from '@/demo/utils/data-generator';
+
+import { VirtualizedList } from '@/components/virtualized-list/virtualized-list';
+import { NonVirtualizedList } from '@/components/non-virtualized-list/non-virtualized-list';
+import { ModeToggle, type ListMode } from '@/components/ui/mode-toggle';
+import { ControlPanel } from '@/components/ui/control-panel';
+import { ResourceSavingsDisplay } from '@/components/ui/resource-savings-display';
+import { BaselineInfoDisplay } from '@/components/ui/baseline-info-display';
+import { ErrorBoundary } from '@/components/ui/error-boundary';
+
 import type {
   PerformanceMetrics,
   DemoConfig,
   UnifiedDemoState,
 } from './unified-demo-types';
-import type { PerformanceMetrics as CorePerformanceMetrics } from '../../core/virtualization/types';
+
+import type { PerformanceMetrics as CorePerformanceMetrics } from '@/core/virtualization/types';
+
 import styles from './unified-demo-page.module.css';
 
 /**

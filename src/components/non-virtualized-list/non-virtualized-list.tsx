@@ -9,8 +9,11 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { PerformanceMonitor } from '../../adapters/performance-api/performance-monitor';
-import type { PerformanceMetrics } from '../../core/virtualization/types';
+
+import { PerformanceMonitor } from '@/adapters/performance-api/performance-monitor';
+
+import type { PerformanceMetrics } from '@/core/virtualization/types';
+
 import styles from './non-virtualized-list.module.css';
 
 /**

@@ -11,8 +11,8 @@
  */
 
 import { useEffect, useRef } from 'react';
-import { averageMetrics } from '../utils/baseline-validator';
-import type { PerformanceMetrics, DemoConfig } from '../pages/unified-demo-types';
+import { averageMetrics } from '@/demo/utils/baseline-validator';
+import type { PerformanceMetrics, DemoConfig } from '@/demo/pages/unified-demo-types';
 
 /**
  * Callback function type for baseline capture

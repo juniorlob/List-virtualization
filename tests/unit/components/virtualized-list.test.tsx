@@ -6,7 +6,8 @@
 
 import { describe, it, expect } from 'vitest';
 import { render } from '@testing-library/react';
-import { VirtualizedList } from '../../../src/components/virtualized-list';
+
+import { VirtualizedList } from '@/components/virtualized-list';
 
 describe('VirtualizedList Component', () => {
   describe('Component Structure (Task 6.1)', () => {

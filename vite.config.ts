@@ -5,6 +5,18 @@ import { resolve } from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      '@/core': resolve(__dirname, './src/core'),
+      '@/hooks': resolve(__dirname, './src/hooks'),
+      '@/components': resolve(__dirname, './src/components'),
+      '@/adapters': resolve(__dirname, './src/adapters'),
+      '@/demo': resolve(__dirname, './src/demo'),
+      '@/utils': resolve(__dirname, './src/utils'),
+      '@/scripts': resolve(__dirname, './src/scripts'),
+    },
+  },
   css: {
     modules: {
       localsConvention: 'camelCase',

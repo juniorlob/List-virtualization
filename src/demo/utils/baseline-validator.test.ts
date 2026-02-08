@@ -9,7 +9,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { shouldInvalidateBaseline, averageMetrics } from './baseline-validator';
-import type { PerformanceMetrics, DemoConfig } from '../pages/unified-demo-types';
+import type { PerformanceMetrics, DemoConfig } from '@/demo/pages/unified-demo-types';
 
 describe('shouldInvalidateBaseline', () => {
   describe('baseline invalidation conditions', () => {

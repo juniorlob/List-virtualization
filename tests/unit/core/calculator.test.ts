@@ -6,7 +6,8 @@
  */
 
 import { describe, it, expect } from 'vitest';
-import { VirtualizationCalculator } from '../../../src/core/virtualization/calculator';
+
+import { VirtualizationCalculator } from '@/core/virtualization/calculator';
 
 describe('VirtualizationCalculator', () => {
   let calculator: VirtualizationCalculator;

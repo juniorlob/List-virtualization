@@ -12,7 +12,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { BaselineInfoDisplay } from './baseline-info-display';
-import type { PerformanceMetrics } from '../../demo/pages/unified-demo-types';
+import type { PerformanceMetrics } from '@/demo/pages/unified-demo-types';
 
 describe('BaselineInfoDisplay', () => {
   const mockBaselineMetrics: PerformanceMetrics = {

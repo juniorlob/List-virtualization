@@ -9,8 +9,9 @@
  */
 
 import { useMemo } from 'react';
-import type { PerformanceMetrics, ResourceSavings } from '../../demo/pages/unified-demo-types';
-import { calculateResourceSavings } from '../../demo/utils/resource-savings-calculator';
+import type { PerformanceMetrics, ResourceSavings } from '@/demo/pages/unified-demo-types';
+import { calculateResourceSavings } from '@/demo/utils/resource-savings-calculator';
+
 import styles from './resource-savings-display.module.css';
 
 interface ResourceSavingsDisplayProps {

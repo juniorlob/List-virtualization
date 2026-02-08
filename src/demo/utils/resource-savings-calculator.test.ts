@@ -9,7 +9,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { calculateResourceSavings } from './resource-savings-calculator';
-import type { PerformanceMetrics } from '../pages/unified-demo-types';
+import type { PerformanceMetrics } from '@/demo/pages/unified-demo-types';
 
 describe('calculateResourceSavings', () => {
   describe('basic calculations', () => {

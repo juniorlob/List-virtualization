@@ -12,8 +12,8 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
-import { useBaselineAutoCapture } from '../../../src/demo/hooks/use-baseline-auto-capture';
-import type { PerformanceMetrics, DemoConfig } from '../../../src/demo/pages/unified-demo-types';
+import { useBaselineAutoCapture } from '@/demo/hooks/use-baseline-auto-capture';
+import type { PerformanceMetrics, DemoConfig } from '@/demo/pages/unified-demo-types';
 
 describe('useBaselineAutoCapture', () => {
   beforeEach(() => {

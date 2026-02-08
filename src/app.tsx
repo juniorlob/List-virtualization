@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ComparisonDemo, InteractiveDemo, UnifiedDemoPage } from './demo/pages'
+import { ComparisonDemo, InteractiveDemo, UnifiedDemoPage } from '@/demo/pages'
+
 import './app.css'
 
 type DemoPage = 'comparison' | 'interactive' | 'unified' | 'home'

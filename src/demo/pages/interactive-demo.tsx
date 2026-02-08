@@ -8,10 +8,13 @@
  */
 
 import { useState, useCallback, useMemo } from 'react';
-import { VirtualizedList } from '../../components/virtualized-list';
-import { generateData } from '../utils/data-generator';
-import type { DemoItem } from '../utils/data-generator';
-import type { PerformanceMetrics } from '../../core/virtualization/types';
+import { generateData } from '@/demo/utils/data-generator';
+import type { DemoItem } from '@/demo/utils/data-generator';
+
+import { VirtualizedList } from '@/components/virtualized-list';
+
+import type { PerformanceMetrics } from '@/core/virtualization/types';
+
 import styles from './interactive-demo.module.css';
 
 /**

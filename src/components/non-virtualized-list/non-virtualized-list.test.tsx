@@ -10,7 +10,8 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import { NonVirtualizedList } from './non-virtualized-list';
-import type { PerformanceMetrics } from '../../core/virtualization/types';
+
+import type { PerformanceMetrics } from '@/core/virtualization/types';
 
 describe('NonVirtualizedList', () => {
   it('should render all items without virtualization', () => {

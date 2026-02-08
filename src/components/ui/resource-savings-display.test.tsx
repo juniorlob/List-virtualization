@@ -10,7 +10,7 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { ResourceSavingsDisplay } from './resource-savings-display';
-import type { PerformanceMetrics } from '../../demo/pages/unified-demo-types';
+import type { PerformanceMetrics } from '@/demo/pages/unified-demo-types';
 
 describe('ResourceSavingsDisplay', () => {
   const mockBaselineMetrics: PerformanceMetrics = {

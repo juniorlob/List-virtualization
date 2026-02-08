@@ -8,7 +8,7 @@
  * Requirements: 3.2, 3.3, 3.4, 3.5
  */
 
-import type { PerformanceMetrics, ResourceSavings } from '../pages/unified-demo-types';
+import type { PerformanceMetrics, ResourceSavings } from '@/demo/pages/unified-demo-types';
 
 /**
  * Calculates resource savings by comparing current metrics against baseline metrics.

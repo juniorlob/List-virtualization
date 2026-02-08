@@ -7,7 +7,8 @@
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook } from '@testing-library/react';
-import { useVirtualization } from '../../../src/hooks/use-virtualization';
+
+import { useVirtualization } from '@/hooks/use-virtualization';
 
 describe('useVirtualization - Metrics Update Frequency', () => {
   beforeEach(() => {
